@@ -2,7 +2,7 @@ FROM macropin/strider:latest
 
 MAINTAINER Andrew Cutler <andrew@panubo.io> 
 
-ENV FLEET_VERSION=v0.10.1
+ENV FLEET_VERSION v0.10.1
 ENV PATH /data/bin:$PATH
 
 RUN cd /tmp && \
