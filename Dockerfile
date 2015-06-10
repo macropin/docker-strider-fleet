@@ -11,3 +11,5 @@ RUN cd /tmp && \
     mkdir -p /data/bin/ && \
     mv /tmp/fleet*/fleetctl /data/bin/ && \
     rm -rf /tmp/*
+
+COPY blue-green-deployment.sh /usr/local/bin/
