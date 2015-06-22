@@ -4,6 +4,8 @@ MAINTAINER Andrew Cutler <andrew@panubo.io>
 
 ENV FLEET_VERSION v0.10.1
 
+USER root
+
 RUN cd /tmp && \
     wget https://github.com/coreos/fleet/releases/download/${FLEET_VERSION}/fleet-${FLEET_VERSION}-linux-amd64.tar.gz && \
     tar -v --wildcards -z --extract --file=fleet-v0.10.1-linux-amd64.tar.gz */fleetctl && \
@@ -11,3 +13,5 @@ RUN cd /tmp && \
     rm -rf /tmp/*
 
 COPY blue-green-deployment.sh /usr/local/bin/
+
+USER fleet
