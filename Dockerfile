@@ -20,4 +20,6 @@ RUN apt-get update && apt-get install -y vim rsync sudo && \
     echo "strider ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /data/.strider/data && chown -R strider:strider /data/.strider/data
+
 USER strider
