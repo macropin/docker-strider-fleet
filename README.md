@@ -1,5 +1,5 @@
 # Strider CD for Docker w/ Fleet
 
-This bakes in `fleetctl` and `etcdctl`.
+This bakes in `fleetctl`, `etcdctl`, `vim`, `rsync` and `sudo`.
 
-As well as `vim`, `rsync` and `sudo`.
+It also makes `.strider` ephemeral and links it to `/tmp/strider`.

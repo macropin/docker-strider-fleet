@@ -22,3 +22,5 @@ RUN apt-get update && apt-get install -y vim rsync sudo && \
 
 USER strider
 RUN mkdir -p /tmp/strider/{cache,data,git}
+COPY pre-entry.sh /
+ENTRYPOINT ["/pre-entry.sh"]
