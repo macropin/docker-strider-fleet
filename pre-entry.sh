@@ -12,4 +12,4 @@ if [ ! -L "/data/.strider" ]; then
 fi
 
 echo "Running /entry.sh $@"
-/entry.sh $@
+/entry.sh "$@"
