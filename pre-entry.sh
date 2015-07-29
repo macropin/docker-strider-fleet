@@ -11,6 +11,5 @@ if [ ! -L "/data/.strider" ]; then
     ln -s /data/.strider /tmp/strider
 fi
 
-shift
 echo "Exec'ing /entry.sh $@"
 exec "/entry.sh $@"
