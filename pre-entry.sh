@@ -8,7 +8,7 @@ echo "$(basename $0) >> Running"
 if [ ! -L "/data/.strider" ]; then
     echo "$(basename $0) >> Adding symlink for /tmp/strider"
     rm -rf /data/.strider
-    ln -s /data/.strider /tmp/strider
+    cd /data && ln -s /tmp/strider/ .strider
 fi
 
 echo "Running /entry.sh $@"
