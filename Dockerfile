@@ -21,3 +21,4 @@ RUN apt-get update && apt-get install -y vim rsync sudo && \
     rm -rf /var/lib/apt/lists/*
 
 USER strider
+RUN mkdir -p /tmp/strider
