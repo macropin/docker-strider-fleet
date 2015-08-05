@@ -1,4 +1,6 @@
-# Strider CD for Docker w/ Fleet
+# Strider-CD for Docker w/ Fleet
+
+[![Docker Repository on Quay.io](https://quay.io/repository/macropin/strider-fleet/status "Docker Repository on Quay.io")](https://quay.io/repository/macropin/strider-fleet)
 
 This bakes in `fleetctl`, `etcdctl`, `vim`, `rsync` and `sudo`.
 
