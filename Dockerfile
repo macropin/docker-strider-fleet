@@ -2,7 +2,7 @@ FROM macropin/strider:latest
 
 MAINTAINER Andrew Cutler <andrew@panubo.io> 
 
-ENV FLEET_VERSION=v0.10.1 ETCD_VERSION=v2.0.12
+ENV FLEET_VERSION=v0.11.5 ETCD_VERSION=v2.0.12
 
 USER root
 
