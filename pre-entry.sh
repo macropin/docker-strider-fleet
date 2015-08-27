@@ -11,5 +11,5 @@ if [ ! -L "/data/.strider" ]; then
     cd /data && ln -s /tmp/strider/ .strider
 fi
 
-echo "Running /entry.sh $@"
-/entry.sh "$@"
+echo "Exec'ing /entry.sh $@"
+exec /usr/bin/env bash /entry.sh "$@"
