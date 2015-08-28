@@ -2,21 +2,34 @@ FROM macropin/strider:latest
 
 MAINTAINER Andrew Cutler <andrew@panubo.io> 
 
-ENV FLEET_VERSION=v0.10.1 ETCD_VERSION=v2.0.12
+ENV DOCKER_VERSION=1.6.2 VENV_ROOT=/usr/local FLEET_VERSION=v0.10.1 ETCD_VERSION=v2.0.12
 
 USER root
 
-RUN cd /tmp && \
+RUN # Install strider.sh && \
+    curl --silent https://raw.githubusercontent.com/panubo/strider-deploy/master/strider.sh > /usr/local/bin/strider.sh && \
+    chmod +x /usr/local/bin/strider.sh && \
+    # Install Docker binary
+    curl --silent https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION} > /usr/local/bin/docker && \
+    chmod +x /usr/local/bin/docker && \
+    # Install Python apps globally rather than into virtualenv
+    apt-get update && apt-get install -y python-dev python-pip && \
+    pip install --upgrade git+https://github.com/panubo/fleet-deploy.git#egg=fleet-deploy  && \
+    pip install --upgrade git+https://github.com/panubo/fleet-deploy-atomic#egg=fleet-deploy-atomic && \
+    pip install --upgrade git+https://github.com/panubo/docker-templater.git#egg=templater && \
+    # Install Fleet
+    cd /tmp && \
     wget https://github.com/coreos/fleet/releases/download/${FLEET_VERSION}/fleet-${FLEET_VERSION}-linux-amd64.tar.gz && \
     tar -v --wildcards -z --extract --file=fleet-${FLEET_VERSION}-linux-amd64.tar.gz */fleetctl && \
     mv /tmp/fleet*/fleetctl /usr/local/bin/ && \
     wget https://github.com/coreos/etcd/releases/download/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-amd64.tar.gz && \
     tar -v --wildcards -z --extract --file=etcd-${ETCD_VERSION}-linux-amd64.tar.gz */etcdctl && \
     mv /tmp/etcd-*/etcdctl /usr/local/bin && \
-    rm -rf /tmp/*
-
-RUN apt-get update && apt-get install -y vim rsync sudo && \
+    # Install some tools
+    apt-get update && apt-get install -y vim rsync sudo && \
     echo "strider ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    # Cleanup && \
+    rm -rf /tmp/* && \
     rm -rf /var/lib/apt/lists/*
 
 USER strider
