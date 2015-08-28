@@ -2,7 +2,7 @@ FROM macropin/strider:latest
 
 MAINTAINER Andrew Cutler <andrew@panubo.io> 
 
-ENV DOCKER_VERSION=1.6.2 VENV_ROOT=/usr/local FLEET_VERSION=v0.10.1 ETCD_VERSION=v2.0.12
+ENV DOCKER_VERSION=1.6.2 VENV_ROOT=/usr/local FLEET_VERSION=v0.11.5 ETCD_VERSION=v2.0.12
 
 USER root
 
@@ -19,10 +19,10 @@ RUN # Install strider.sh && \
     pip install --upgrade git+https://github.com/panubo/docker-templater.git#egg=templater && \
     # Install Fleet
     cd /tmp && \
-    wget https://github.com/coreos/fleet/releases/download/${FLEET_VERSION}/fleet-${FLEET_VERSION}-linux-amd64.tar.gz && \
+    wget -nv https://github.com/coreos/fleet/releases/download/${FLEET_VERSION}/fleet-${FLEET_VERSION}-linux-amd64.tar.gz && \
     tar -v --wildcards -z --extract --file=fleet-${FLEET_VERSION}-linux-amd64.tar.gz */fleetctl && \
     mv /tmp/fleet*/fleetctl /usr/local/bin/ && \
-    wget https://github.com/coreos/etcd/releases/download/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-amd64.tar.gz && \
+    wget -nv https://github.com/coreos/etcd/releases/download/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-amd64.tar.gz && \
     tar -v --wildcards -z --extract --file=etcd-${ETCD_VERSION}-linux-amd64.tar.gz */etcdctl && \
     mv /tmp/etcd-*/etcdctl /usr/local/bin && \
     # Install some tools
