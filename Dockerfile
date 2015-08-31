@@ -27,7 +27,7 @@ RUN curl --silent https://raw.githubusercontent.com/panubo/strider-deploy/master
     tar -v --wildcards -z --extract --file=etcd-${ETCD_VERSION}-linux-amd64.tar.gz */etcdctl && \
     install /tmp/etcd-*/etcdctl /usr/local/bin/ && \
     # Install some tools
-    apt-get update && apt-get install -y vim rsync sudo && \
+    apt-get install -y vim rsync sudo && \
     echo "strider ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     # Cleanup
     rm -rf /tmp/* && \
