@@ -2,7 +2,7 @@ FROM macropin/strider:latest
 
 MAINTAINER Andrew Cutler <andrew@panubo.io> 
 
-ENV DOCKER_VERSION=1.6.2 VENV_ROOT=/usr/local FLEET_VERSION=v0.11.5 ETCD_VERSION=v2.0.12
+ENV DOCKER_VERSION=1.6.2 VENV_ROOT=/usr/local USE_VENV=false FLEET_VERSION=v0.11.5 ETCD_VERSION=v2.0.12
 
 USER root
 
