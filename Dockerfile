@@ -17,6 +17,7 @@ RUN # Install strider.sh && \
     pip install --upgrade git+https://github.com/panubo/fleet-deploy.git#egg=fleet-deploy  && \
     pip install --upgrade git+https://github.com/panubo/fleet-deploy-atomic#egg=fleet-deploy-atomic && \
     pip install --upgrade git+https://github.com/panubo/docker-templater.git#egg=templater && \
+    pip install --upgrade j2cli && \
     # Install Fleet
     cd /tmp && \
     wget -nv https://github.com/coreos/fleet/releases/download/${FLEET_VERSION}/fleet-${FLEET_VERSION}-linux-amd64.tar.gz && \
