@@ -6,8 +6,8 @@ ENV DOCKER_VERSION=1.6.2 VENV_ROOT=/usr/local FLEET_VERSION=v0.11.5 ETCD_VERSION
 
 USER root
 
-RUN # Install strider.sh && \
-    curl --silent https://raw.githubusercontent.com/panubo/strider-deploy/master/strider.sh > /usr/local/bin/strider.sh && \
+# Install strider.sh
+RUN curl --silent https://raw.githubusercontent.com/panubo/strider-deploy/master/strider.sh > /usr/local/bin/strider.sh && \
     chmod +x /usr/local/bin/strider.sh && \
     # Install Docker binary
     curl --silent https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION} > /usr/local/bin/docker && \
@@ -25,11 +25,11 @@ RUN # Install strider.sh && \
     mv /tmp/fleet*/fleetctl /usr/local/bin/ && \
     wget -nv https://github.com/coreos/etcd/releases/download/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-amd64.tar.gz && \
     tar -v --wildcards -z --extract --file=etcd-${ETCD_VERSION}-linux-amd64.tar.gz */etcdctl && \
-    mv /tmp/etcd-*/etcdctl /usr/local/bin && \
+    mv /tmp/etcd-*/etcdctl /usr/local/bin/ && \
     # Install some tools
     apt-get update && apt-get install -y vim rsync sudo && \
     echo "strider ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    # Cleanup && \
+    # Cleanup
     rm -rf /tmp/* && \
     rm -rf /var/lib/apt/lists/*
 
