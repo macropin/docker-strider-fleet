@@ -12,7 +12,7 @@ if [ ! -L "/data/.strider" ]; then
 fi
 
 # Allow strider user to run docker commands
-sudo chmod o+rw /var/run/docker.sock
+[ -S "/var/run/docker.sock" ] && sudo chmod o+rw /var/run/docker.sock
 
 echo "Exec'ing /entry.sh $@"
 exec /usr/bin/env bash /entry.sh "$@"
