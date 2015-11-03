@@ -2,6 +2,8 @@
 
 set -e
 
+[ "$DEBUG" == 'true' ] && set -x
+
 echo "$(basename $0) >> Running"
 
 # Make .strider ephemeral. Link to /tmp to use local host io.
