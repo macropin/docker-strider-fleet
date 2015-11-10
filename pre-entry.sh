@@ -4,7 +4,7 @@ set -e
 
 [ "$DEBUG" == 'true' ] && set -x
 
-echo "$(basename $0) >> Running"
+echo "$(basename $0) >> Running BUILD $BUILD"
 
 # Make .strider ephemeral. Link to /tmp to use local host io.
 if [ ! -L "/data/.strider" ]; then
