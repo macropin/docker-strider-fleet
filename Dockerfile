@@ -2,7 +2,7 @@ FROM macropin/strider:latest
 
 MAINTAINER Andrew Cutler <andrew@panubo.io> 
 
-ENV BUILD=2015111700 DOCKER_VERSION=1.6.2 DEPLOY_VENV_ROOT=/usr/local DEPLOY_USE_VENV=false FLEET_VERSION=v0.11.5 ETCD_VERSION=v2.0.12
+ENV BUILD=2016050500 DOCKER_VERSION=1.6.2 DEPLOY_VENV_ROOT=/usr/local DEPLOY_USE_VENV=false FLEET_VERSION=v0.11.5 ETCD_VERSION=v2.0.12
 
 USER root
 
@@ -14,7 +14,9 @@ RUN curl --silent https://raw.githubusercontent.com/panubo/strider-deploy/master
     chmod +x /usr/local/bin/docker && \
     # Install Python apps globally rather than into virtualenv
     apt-get update && apt-get install -y python-dev python-pip && \
-    pip install --upgrade git+https://github.com/panubo/fleet-deploy.git#egg=fleet-deploy  && \
+    # Kludge: Workaround for setuptools crapyness https://github.com/pyca/cryptography/issues/2280
+    pip install -U cffi && \
+    pip install --upgrade git+https://github.com/panubo/fleet-deploy.git#egg=fleet-deploy && \
     pip install --upgrade git+https://github.com/panubo/fleet-deploy-atomic#egg=fleet-deploy-atomic && \
     pip install --upgrade git+https://github.com/panubo/docker-templater.git#egg=templater && \
     pip install --upgrade j2cli && \
