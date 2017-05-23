@@ -1,7 +1,6 @@
 # Strider-CD for Docker w/ Extras
 
 [![Docker Repository on Quay.io](https://quay.io/repository/panubo/strider-extra/status "Docker Repository on Quay.io")](https://quay.io/repository/panubo/strider-extra)
-[![](https://badge.imagelayers.io/panubo/strider-extra:latest.svg)](https://imagelayers.io/?images= panubo/strider-extra:latest)
 
 This bakes in `docker`, `fleetctl`, `etcdctl`, `vim`, `rsync`, `sudo` and some [Panubo](https://panubo.io) tools.
 
